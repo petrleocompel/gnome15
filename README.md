@@ -1,7 +1,7 @@
 STATUS OF GNOME15
 =================
 
-The latest updates to Fedora 21 seem to have broken the G15logging scripts for python.  There's quite a bit of outdated code that's being used so I expect getting this project up to speed may take a while.
+The latest updates to Fedora 21 seem to fully removed support for deprecated gconf calls.   There's quite a bit of outdated code that's being used so I expect getting this project up to speed may take a while.
 
 I'm going to be attempting to find the issue preventing the logs from being imported to get the GUI running again.  The install was switched somewhere down the line to automake so the build instructions need a little updating to get running.  Because of the Russo79 website going down it appears we may have lost some commits.  Anyways I'm picking up maintance of the project and will be setting up a bug tracker to help get this project rolling again.
 
@@ -22,12 +22,15 @@ Installation
 
 See the 'INSTALL' file.
 
+
+NOTE: somewhere down the line this project switched to automake so the INSTALL file is a little dated
+
 How to report bugs
 ==================
 
-Issues can be submited on the contributors website [3].
+Issues can be submitted on the contributors website [3].
 
-[3] https://projects.russo79.com/projects/gnome15
+[3] http://issues.zachtwebdev.com
 
 Requirements
 ============
