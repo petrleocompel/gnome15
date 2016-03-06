@@ -43,137 +43,147 @@ let currNotification, gnome15Service, devices, dbus_watch_id;
  * available, just enough to do the job
  */ 
 
-const Gnome15ServiceInterface = <interface name="org.gnome15.Service">
-<method name="GetDevices">
-	<arg type="as" direction="out"/>
-</method>
-<method name="GetScreens">
-	<arg type="as" direction="out"/>
-</method>
-<method name="GetServerInformation">
-	<arg type="s" direction="out" name="name"/>
-	<arg type="s" direction="out" name="vendor"/>
-	<arg type="s" direction="out" name="version"/>
-	<arg type="s" direction="out" name="spec_version"/>
-</method>
-<method name="IsStarted">
-	<arg type="b" direction="out"/>
-</method>
-<method name="IsStarting">
-	<arg type="b" direction="out"/>
-</method>
-<method name="IsStopping">
-	<arg type="b" direction="out"/>
-</method>
-<method name="Stop"/>
-<signal name="ScreenAdded">
-	<arg type="s" name="screen_name"/>
-</signal>
-<signal name="ScreenRemoved">
-	<arg type="s" name="screen_name"/>
-</signal>
-<signal name="DeviceAdded">
-	<arg type="s" name="device_name"/>
-</signal>
-<signal name="DeviceRemoved">
-	<arg type="s" name="device_name"/>
-</signal>
-<signal name="Started"/>
-<signal name="Starting"/>
-<signal name="Stopped"/>
-<signal name="Stopping"/>
-</interface>
+const Gnome15ServiceInterface = '<node>\
+<interface name="org.gnome15.Service">\
+<method name="GetDevices">\
+	<arg type="as" direction="out"/>\
+</method>\
+<method name="GetScreens">\
+	<arg type="as" direction="out"/>\
+</method>\
+<method name="GetServerInformation">\
+	<arg type="s" direction="out" name="name"/>\
+	<arg type="s" direction="out" name="vendor"/>\
+	<arg type="s" direction="out" name="version"/>\
+	<arg type="s" direction="out" name="spec_version"/>\
+</method>\
+<method name="IsStarted">\
+	<arg type="b" direction="out"/>\
+</method>\
+<method name="IsStarting">\
+	<arg type="b" direction="out"/>\
+</method>\
+<method name="IsStopping">\
+	<arg type="b" direction="out"/>\
+</method>\
+<method name="Stop"/>\
+<signal name="ScreenAdded">\
+	<arg type="s" name="screen_name"/>\
+</signal>\
+<signal name="ScreenRemoved">\
+	<arg type="s" name="screen_name"/>\
+</signal>\
+<signal name="DeviceAdded">\
+	<arg type="s" name="device_name"/>\
+</signal>\
+<signal name="DeviceRemoved">\
+	<arg type="s" name="device_name"/>\
+</signal>\
+<signal name="Started"/>\
+<signal name="Starting"/>\
+<signal name="Stopped"/>\
+<signal name="Stopping"/>\
+</interface>\
+</node>';
 
 
-const Gnome15ScreenInterface = <interface name="org.gnome15.Screen">
-<method name="GetPages">
-	<arg type="as" direction="out" />
-</method>
-<method name="IsConnected">
-	<arg type="b" direction="out" />
-</method>
-<method name="GetDriverInformation">
-	<arg type="s" direction="out" name="name"/>
-	<arg type="s" direction="out" name="model_name"/>
-	<arg type="n" direction="out" name="xres"/>
-	<arg type="n" direction="out" name="yres"/>
-	<arg type="n" direction="out" name="bpp"/>
-</method>
-<method name="IsCyclingEnabled">
-	<arg type="b" direction="out" />
-</method>
-<method name="SetCyclingEnabled">
-	<arg type="b" direction="in" name="enabled"/>
-</method>
-<method name="Cycle">
-	<arg type="i" direction="in" name="cycle"/>
-</method>
-<method name="CycleKeyboard">
-	<arg type="i" direction="in" name="value"/>
-</method>
-<signal name="PageCreated">
-	<arg type="s" name="page_path"/>
-	<arg type="s" name="title"/>
-</signal>
-<signal name="PageDeleted">
-	<arg type="s" name="page_path"/>
-</signal>
-<signal name="PageDeleting">
-	<arg type="s" name="page_path"/>
-</signal>
-<signal name="PageChanged">
-	<arg type="s" name="page_path"/>
-</signal>
-<signal name="PageTitleChanged">
-	<arg type="s" name="page_path"/>
-	<arg type="s" name="new_title"/>
-</signal>
-<signal name="Connected">
-	<arg type="s" name="driver_name"/>
-</signal>
-<signal name="Disconnected">
-	<arg type="s" name="driver_name"/>
-</signal>
-<signal name="CyclingChanged">
-	<arg type="b" name="cycle"/>
-</signal>
-</interface>
+
+const Gnome15ScreenInterface = '<node>\
+<interface name="org.gnome15.Screen">\
+<method name="GetPages">\
+	<arg type="as" direction="out" />\
+</method>\
+<method name="IsConnected">\
+	<arg type="b" direction="out" />\
+</method>\
+<method name="GetDriverInformation">\
+	<arg type="s" direction="out" name="name"/>\
+	<arg type="s" direction="out" name="model_name"/>\
+	<arg type="n" direction="out" name="xres"/>\
+	<arg type="n" direction="out" name="yres"/>\
+	<arg type="n" direction="out" name="bpp"/>\
+</method>\
+<method name="IsCyclingEnabled">\
+	<arg type="b" direction="out" />\
+</method>\
+<method name="SetCyclingEnabled">\
+	<arg type="b" direction="in" name="enabled"/>\
+</method>\
+<method name="Cycle">\
+	<arg type="i" direction="in" name="cycle"/>\
+</method>\
+<method name="CycleKeyboard">\
+	<arg type="i" direction="in" name="value"/>\
+</method>\
+<signal name="PageCreated">\
+	<arg type="s" name="page_path"/>\
+	<arg type="s" name="title"/>\
+</signal>\
+<signal name="PageDeleted">\
+	<arg type="s" name="page_path"/>\
+</signal>\
+<signal name="PageDeleting">\
+	<arg type="s" name="page_path"/>\
+</signal>\
+<signal name="PageChanged">\
+	<arg type="s" name="page_path"/>\
+</signal>\
+<signal name="PageTitleChanged">\
+	<arg type="s" name="page_path"/>\
+	<arg type="s" name="new_title"/>\
+</signal>\
+<signal name="Connected">\
+	<arg type="s" name="driver_name"/>\
+</signal>\
+<signal name="Disconnected">\
+	<arg type="s" name="driver_name"/>\
+</signal>\
+<signal name="CyclingChanged">\
+	<arg type="b" name="cycle"/>\
+</signal>\
+</interface>\
+</node>';
+
 /* No idea why, but Cycle and CycleKeyboard signatures argument type are actually 'n',
  * but this causes an exception when calling with JavaScript integer.
  */
 
-const Gnome15DeviceInterface = <interface name="org.gnome15.Device">
-<method name="GetScreen">
-	<arg type="s" direction="out" />
-</method>
-<method name="GetModelFullName">
-	<arg type="s" direction="out" />
-</method>
-<method name="GetUID">
-	<arg type="s" direction="out" />
-</method>
-<method name="GetModelId">
-	<arg type="s" direction="out" />
-</method>
-<method name="Enable"/>
-<method name="Disable"/>
-<signal name="ScreenAdded">
-	<arg type="s" name="screen_name"/>
-</signal>
-<signal name="ScreenRemoved">
-	<arg type="s" name="screen_name"/>
-</signal>
-</interface>
+const Gnome15DeviceInterface = '<node>\
+<interface name="org.gnome15.Device">\
+<method name="GetScreen">\
+	<arg type="s" direction="out" />\
+</method>\
+<method name="GetModelFullName">\
+	<arg type="s" direction="out" />\
+</method>\
+<method name="GetUID">\
+	<arg type="s" direction="out" />\
+</method>\
+<method name="GetModelId">\
+	<arg type="s" direction="out" />\
+</method>\
+<method name="Enable"/>\
+<method name="Disable"/>\
+<signal name="ScreenAdded">\
+	<arg type="s" name="screen_name"/>\
+</signal>\
+<signal name="ScreenRemoved">\
+	<arg type="s" name="screen_name"/>\
+</signal>\
+</interface>\
+</node>';
 
-const Gnome15PageInterface = <interface name="org.gnome15.Page">
-<method name="GetTitle">
-	<arg type="s" direction="out" />
-</method>
-<method name="GetId">
-	<arg type="s" direction="out" />
-</method>
-<method name="CycleTo"/>
-</interface>
+const Gnome15PageInterface = '<node>\
+<interface name="org.gnome15.Page">\
+<method name="GetTitle">\
+	<arg type="s" direction="out" />\
+</method>\
+<method name="GetId">\
+	<arg type="s" direction="out" />\
+</method>\
+<method name="CycleTo"/>\
+</interface>\
+</node>';
 
 /**
  * Instances of this class are responsible for managing a single device.

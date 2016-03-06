@@ -25,6 +25,9 @@ Installation
 
 See the 'INSTALL' file or the [Wiki Entry](https://github.com/Huskynarr/gnome15/wiki/INSTALL)
 
+
+NOTE: somewhere down the line this project switched to automake so the INSTALL file is a little dated
+
 How to report bugs
 ==================
 
