@@ -9,10 +9,12 @@ I'm doing that on my own. It's a lot of work.
 
 - [x] Run on Gnome3
 - [x] Install tutorial
+- [ ] Fix periodical crashes
 - [ ] [Code of migration from GConf to GSettings](https://developer.gnome.org/gio/unstable/ch34.html)
 - [ ] GTK+ 3
 - [ ] Make code more clear
 - [ ] Write documentation
+- [ ] Python 3 ?? Maybe
 - [ ] And more
 
 ---
@@ -44,10 +46,11 @@ the work of "MultiCoreNop" [2].
 
 - libtoolize
 - autoconf / automake
-- uinput
+- udev
+- build tools
 - Python
-- PyUSB
-- and more...
+    - PyUSB
+    - and more...
 
 > I'm user of ubuntu - for us is simple tut how to install it
 
@@ -58,13 +61,15 @@ the work of "MultiCoreNop" [2].
 3. Checkout project from github
 4. Let automake do it's job
 5. Compile and install
-6. Use
+6. Bad thing
+7. Use
 
 
 #### apt
 
 ```
-apt-get install libtoolize autoconf udev python-virtkey python-keyring python-gtk2 python-gtk2-dev pip python-usb python-rsvg libudev-dev python-wnck python-pil
+sudo apt-get install build-essential libtoolize autoconf udev libg15-1 libg15-dev
+sudo apt-get install python-virtkey python-gobject python-xlib python-keyring python-gtk2 python-gtk2-dev pip python-usb python-rsvg libudev-dev python-wnck python-pil python-setproctitle python-rsvg python-pyudev
 ```
 
 #### pip
@@ -119,8 +124,24 @@ My configuration is this - Because I have G510
 And last is make and make install
 ```
 make
-make install
+sudo make install
 ```
+
+### Bad thing
+
+> Because gnome15 was for long time dead you will have to replace libg15
+
+Actually installed libg15 is for compilation but now it will not work with old software.
+
+So you will have to uninstall libg15 and install [libg15-gnome15](https://github.com/cpyarger/Gnome15/blob/master/libg15-gnome15-1_1.3.0.3-0gnome15atrusty1_amd64.deb)
+
+```
+sudo apt-get remove libg15-1
+wget https://github.com/cpyarger/Gnome15/blob/master/libg15-gnome15-1_1.3.0.3-0gnome15atrusty1_amd64.deb
+sudo dpkg -i libg15-gnome15-1_1.3.0.3-0gnome15atrusty1_amd64.deb
+```
+
+> This is just for some time - This is the first thing I will have to fix
 
 #### Use
 
