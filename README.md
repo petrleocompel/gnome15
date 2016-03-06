@@ -134,4 +134,6 @@ You can run g15-config for configuration or by running it in your apps menu
 
 Issues can be submitted on the [github](https://github.com/petrleocompel/gnome15/issues)
 
-> This is not my main project so don't expect any ETA and so long.. :smile:
+> This is not my main project so don't expect any ETA and so long..
+
+That's all the folks ! :blush:
