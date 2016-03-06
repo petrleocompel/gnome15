@@ -19,7 +19,13 @@
 import sys
 
 import os
+
+import pygtk
+pygtk.require('2.0')
+import gtk
 import gconf
+import gobject
+gobject.threads_init()
 # Allow running from local path
 path = os.path.join(os.path.abspath(os.path.dirname(sys.argv[0])), "..")
 if os.path.exists(path):
@@ -36,13 +42,6 @@ try:
 except Exception as a:
     logger.debug("Error when importing Gio", exc_info = a)
     pass
-
-import pygtk
-pygtk.require('2.0')
-import gtk
-import gconf
-import gobject
-gobject.threads_init()
        
 # DBUS - Use to check current desktop service status or stop it
 import dbus
